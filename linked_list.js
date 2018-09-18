@@ -51,6 +51,17 @@ class LinkedList {
     }
     return val;
   }
+
+  search(searchValue) {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.value === searchValue) {
+        return currentNode.value;
+      }
+      currentNode = currentNode.next;
+    }
+    return null;
+  }
 }
 
 class Node {
