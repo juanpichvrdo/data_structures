@@ -37,6 +37,20 @@ class LinkedList {
     }
     return val;
   }
+
+  removeTail() {
+    if (!this.tail) {
+      return null;
+    }
+    const val = this.tail.value;
+    this.tail = this.tail.prev;
+    if (this.tail) {
+      this.tail.prev = null;
+    } else {
+      this.tail = null;
+    }
+    return val;
+  }
 }
 
 class Node {
