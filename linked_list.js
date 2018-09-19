@@ -62,6 +62,20 @@ class LinkedList {
     }
     return null;
   }
+
+  indexOf(value) {
+    const indexes = [];
+    let currentIndex = 0;
+    let currentNode = this.head.value;
+    while (currentNode) {
+      if (currentNode.value === value) {
+        indexes.push(currentIndex);
+      }
+      currentNode = currentNode.next;
+      currentIndex++;
+    }
+    return indexes;
+  }
 }
 
 class Node {
