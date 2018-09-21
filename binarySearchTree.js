@@ -33,6 +33,37 @@ class BST {
     if (this.right) this.right.depthFirstTraversal(iteratorFunc, order);
     if (order === "post-order") iteratorFunc(this.value);
   }
+
+  breadthFirstTraversal(iteratorFunc) {
+    const queue = [this];
+    while (queue.length) {
+      let treeNode = queue.shift()
+      iteratorFunc(treeNode)
+      if (treeNode.left) queue.push(treeNode.left)
+      if (treeNode.right) queue.push(treeNode.right)
+
+    }
+  }
+
+  getMinVal() {
+    if (this.left) {
+      return this.left.getMinVal()
+    }
+    else {
+      return this.value
+    }
+  }
+
+
+  getMaxVal() {
+    if (this.right) {
+      return this.right.getMaxVal()
+    }
+    else {
+      return this.value
+    }
+  }
+
 }
 
 const bst = new BST(50);
@@ -49,8 +80,8 @@ bst.insert(85);
 bst.insert(105);
 bst.insert(10);
 
-const log = value => {
-  console.log(value);
+const log = node => {
+  console.log(node.value);
 };
 
-bst.depthFirstTraversal(log, "post-order");
+bst.depthFirstTraversal(log)
