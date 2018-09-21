@@ -25,6 +25,14 @@ class BST {
       else return this.right.contains(value);
     }
   }
+
+  depthFirstTraversal(iteratorFunc, order) {
+    if (order === "pre-order") iteratorFunc(this.value);
+    if (this.left) this.left.depthFirstTraversal(iteratorFunc, order);
+    if (order === "in-order") iteratorFunc(this.value);
+    if (this.right) this.right.depthFirstTraversal(iteratorFunc, order);
+    if (order === "post-order") iteratorFunc(this.value);
+  }
 }
 
 const bst = new BST(50);
@@ -40,3 +48,9 @@ bst.insert(35);
 bst.insert(85);
 bst.insert(105);
 bst.insert(10);
+
+const log = value => {
+  console.log(value);
+};
+
+bst.depthFirstTraversal(log, "post-order");
