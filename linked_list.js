@@ -45,9 +45,9 @@ class LinkedList {
     const val = this.tail.value;
     this.tail = this.tail.prev;
     if (this.tail) {
-      this.tail.prev = null;
+      this.tail.next = null;
     } else {
-      this.tail = null;
+      this.head = null;
     }
     return val;
   }
